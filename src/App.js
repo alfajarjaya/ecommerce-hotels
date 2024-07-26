@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { lazy } from "react";
+import HeroComponent from "./pages/HeroComp";
+import ServiceComponent from "./pages/IntroductionComp";
+import AccommodationsComp from "./pages/AccommodationsComp";
+import DisertComponent from "./pages/DisertComp";
+import EventComp from "./pages/EventComp";
+import FooterComp from "./pages/FooterComp";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// const AboutComponent = lazy(() => import("./pages/AboutComp"));
+
+export default class App extends React.Component {
+    render() {
+        return (
+            <>
+                <div style={{ overflow: 'hidden' }}>
+                    <HeroComponent />
+                    <ServiceComponent />
+                    <AccommodationsComp />
+                    <DisertComponent />
+                    <EventComp />
+                    <FooterComp />
+                </div>
+            </>
+        );
+    }
 }
-
-export default App;
