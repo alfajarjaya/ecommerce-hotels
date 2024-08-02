@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import Skeleton from 'react-skeleton-loader';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Skeleton from '@mui/material/Skeleton';
+import { Avatar } from '@mui/material';
 
-const SkeletonLoader = () => (
-    <div className="skeleton-container" style={{ width: '100%', height: '100%' }}>
-        <Skeleton width="100vw" height="100vh" widthRandomness='0' color=' #E1E1E1'/>
-    </div>
+const SkeletonLoader = (props) => (
+    <Skeleton
+        variant="rectangular"
+        width={'100%'}
+        height={'100vh'}
+        animation='wave'
+        {...props}
+    />
 );
 
 const LoaderHome = ({ children }) => {

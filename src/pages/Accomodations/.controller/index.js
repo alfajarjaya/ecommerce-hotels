@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2';
 
 const postDataPopulerRoom = (data) => {
-    fetch('http://127.0.0.1:5000/api/post', {
+    fetch('http://127.0.0.1:5000/api/post/populer-room', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

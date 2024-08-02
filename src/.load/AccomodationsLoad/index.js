@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import Skeleton from 'react-skeleton-loader';
+import Skeleton from '@mui/material/Skeleton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const SkeletonLoader = () => (
