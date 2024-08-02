@@ -35,3 +35,4 @@ const LoaderHome = ({ children }) => {
 };
 
 export default LoaderHome;
+

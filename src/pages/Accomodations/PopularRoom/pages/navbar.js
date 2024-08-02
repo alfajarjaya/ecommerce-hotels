@@ -3,6 +3,15 @@ import { Container, Button } from 'react-bootstrap';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import FlagIcon from '@mui/icons-material/Flag';
 import '../style/main.css';
+import Swal from 'sweetalert2';
+
+const swal = () => (
+    Swal.fire({
+        title: 'Soon v2',
+        icon: 'info',
+        confirmButtonText: 'I Know'
+    })
+);
 
 function NavbarComponent() {
     return (
@@ -16,8 +25,8 @@ function NavbarComponent() {
                         </a>
                     </div>
                     <div>
-                        <Button variant="outline-light" className="me-2" onClick={() => window.location.href = '/regis'}>Register</Button>
-                        <Button variant="outline-light">Login</Button>
+                        <Button variant="outline-light" className="me-2" onClick={swal}>Register</Button>
+                        <Button variant="outline-light" onClick={swal}>Login</Button>
                     </div>
                 </Container>
             </div>
@@ -25,9 +34,9 @@ function NavbarComponent() {
                 <Container className='d-flex justify-content-center'>
                     <div className="nav-row d-flex justify-content-between align-items-center text-center">
                         <a href="/populer-room" className='nav-link'>Populer</a>
-                        <a href="/tropical-paradise" className='nav-link'>Tropical Paradise</a>
-                        <a href="/business-room" className='nav-link'>Superior room</a>
-                        <a href="/family-room" className='nav-link'>Family room</a>
+                        <a href="#" className='nav-link' onClick={swal}>Tropical Paradise</a>
+                        <a href="#" className='nav-link' onClick={swal}>Superior room</a>
+                        <a href="#" className='nav-link' onClick={swal}>Family room</a>
                     </div>
                 </Container>
             </div>
