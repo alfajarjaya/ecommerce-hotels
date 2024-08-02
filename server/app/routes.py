@@ -14,7 +14,7 @@ def get_data_populer_room():
     databaseName = SQL.databaseSql()
     result = databaseName.get_data_populer_room()
     
-    return jsonify(result)
+    return result
 
 @app.route('/api/data/family-room', methods=['GET'])
 def get_data_family_room():
@@ -24,7 +24,7 @@ def get_data_family_room():
     })
     return data
 
-@app.route('/api/post', methods=['POST'])
+@app.route('/api/post/populer-room', methods=['POST'])
 def post_data():
     data = request.json
     roomName = data['data']['name']

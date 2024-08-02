@@ -1,6 +1,7 @@
 import mysql.connector as connector
 import dotenv
 import os
+from flask import jsonify
 
 dotenv.load_dotenv()
 
@@ -36,42 +37,30 @@ class databaseSql():
     
     def get_data_populer_room(self):
         konektor = self.connection()
-        if konektor is not None:
-            try:
-                cursor = konektor.cursor()
-                query = "SELECT * FROM populer_room" 
-                cursor.execute(query)
-                result = cursor.fetchall()
-                data = {
-                    'populer_room': [
-                        {
-                            'id': row[0],
-                            'title': row[1],
-                            'name': row[2],
-                            'price': row[3],
-                            'desc': row[4]
-                        }
-                        for row in result
-                    ],
-                    'message':'success',
-                    'status_code': 200
-                }
-                
-                return data
-            except Exception as e:
-                print("Error fetching data:", e)
-                
-                return {
-                    'message': e.message,
-                    'status_code': 500
-                }
-            finally:
-                cursor.close()
-                konektor.close()
-        else:
-            print("Connection failed. Data not fetched.")
-            return {
-                'data': [],
-                'message':'Connection failed',
-                'status_code': 500
+        try:
+            cursor = konektor.cursor()
+            query = "SELECT * FROM populer_room" 
+            cursor.execute(query)
+            result = cursor.fetchall()
+            data = {
+                'populer_room': [
+                    {
+                        'id': row[0],
+                        'title': row[1],
+                        'name': row[2],
+                        'price': row[3],
+                        'desc': row[4]
+                    }
+                    for row in result
+                ],
+                'message':'success',
+                'status_code': 200
             }
+                
+            return data
+        except Exception as e:
+            return jsonify({
+                'data': [],
+                'message': str(e),
+                'code': 500
+            })
