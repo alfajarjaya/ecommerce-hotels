@@ -1,6 +1,4 @@
 import React from 'react';
-import '../../style/global.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import Aos from 'aos';
 import 'aos/dist/aos.css';

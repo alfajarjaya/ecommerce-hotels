@@ -1,8 +1,6 @@
 import React from 'react';
 import imageData from './img';
 
-import '../../style/global.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Carousel } from 'react-bootstrap';
 import Aos from 'aos';
 import 'aos/dist/aos.css';

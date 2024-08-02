@@ -1,26 +1,49 @@
-import React, { lazy } from "react";
-import HeroComponent from "./pages/HeroComp";
-import ServiceComponent from "./pages/IntroductionComp";
-import AccommodationsComp from "./pages/AccommodationsComp";
-import DisertComponent from "./pages/DisertComp";
-import EventComp from "./pages/EventComp";
-import FooterComp from "./pages/FooterComp";
+import React, { Suspense, lazy } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import LoadLibrary from "./.load";
+import PopularRoom from "./pages/Accomodations/PopularRoom";
+import LoginPage from './pages/Login';
 
-// const AboutComponent = lazy(() => import("./pages/AboutComp"));
+const Home = lazy(() => new Promise(resolve => {
+    setTimeout(() => resolve(import('./pages/Home')), 800);
+}));
 
 export default class App extends React.Component {
     render() {
         return (
-            <>
-                <div style={{ overflow: 'hidden' }}>
-                    <HeroComponent />
-                    <ServiceComponent />
-                    <AccommodationsComp />
-                    <DisertComponent />
-                    <EventComp />
-                    <FooterComp />
-                </div>
-            </>
+            <Router>
+                <Routes>
+                    <Route path="/" element={
+                        <Suspense fallback={<LoadLibrary.HomeLoad />}>
+                            <Home />
+                        </Suspense>
+                    } />
+                    <Route path="/populer-room" element={
+                        <Suspense fallback={<LoadLibrary.AccomodationsLoad />}>
+                            <PopularRoom />
+                        </Suspense>
+                    } />
+                    <Route path="/regis" element={
+                        <Suspense fallback={<div>Loading Family Room...</div>}>
+                            <Home />
+                        </Suspense>
+                    } />
+                    <Route path="/business-room" element={
+                        <Suspense fallback={<div>Loading Business Room...</div>}>
+                            <Home />
+                        </Suspense>
+                    } />
+                    <Route path="/load" element={
+                        <Suspense fallback={<LoadLibrary.HomeLoad />}>
+                            {/* <Loader /> */}
+                        </Suspense>
+                    } />
+                    <Route path="/login" element={
+                        <LoginPage />
+                    } />
+                    <Route path="*" element={<Navigate to="/" />} />
+                </Routes>
+            </Router>
         );
     }
 }

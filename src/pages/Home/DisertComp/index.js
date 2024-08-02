@@ -1,11 +1,9 @@
 import React from 'react';
-import '../../style/global.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Aos from 'aos';
 import 'aos/dist/aos.css';
-import disertImg from '../../assets/img/disert.jpg';
-import wcImg from '../../assets/img/wc.jpg';
+import disertImg from '../../../assets/img/disert.jpg';
+import wcImg from '../../../assets/img/wc.jpg';
 
 const matchMediaPhone = window.matchMedia("(max-width: 768px)");
 
